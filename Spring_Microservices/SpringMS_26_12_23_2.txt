@@ -1,0 +1,276 @@
+List of Software's req for Microservices-
+1. Java
+2. MySQL/Postgre SQL
+3. Eclipse/ STS
+4. Postman
+5. Consul
+6. Prometheus
+
+
+TOC-
+1. Introduction To Microservices
+2. Advantages of MS
+3. Disadvantages of MS
+4. Walkthrough of the Monolithic Application
+5. Factors Need to be considered for converting the Monolithic to Microservices.
+6. Walkthrough of the Microservices Application
+7. What is Spring Cloud Consul? And why it is imp in the MS Architecture?
+8. What is Application Context and What is Bootstrap Context?
+9. What is Resilience4j?
+10. What is Synchronous and Asynchronous communication?
+11. What is an API gateway?
+12. What is a declarative client?
+13. Introduction to the Prometheus and its use in the Monitoring.
+
+
+1. Introduction To Microservices
+
+Microservices is an architectural approach to building a software application that involves breaking down a large application into a collection of small independent and loosly coupled services.
+- Each service is designed to perform a specifc function and communicate with other through a well defined API's.
+
+2. Advantages of MS
+1. Scalability - this allows to scale up or down independently based on the demand.
+- 1. Horizontal Up Scaling- here we increase the no of servers.
+  2. Vertical up scaling - here we increase the capacity of the existing server.
+
+2. Agility - this allows the developers to work on indidual serviecs with its own technology.
+
+3. Resilience - this allow the services to be fault-tolerant, which means that if one service fails, it will not affect the rest of the application.
+
+3. Disadvantages of MS
+
+1. Operational Overhead - it includes the cost, deployment complexity and higher resource consumption.
+2. Increased Testing Complexity
+3. Increased Database opration overhead.
+
+4. Walkthrough of the Monolithic Application
+
+5. Factors Need to be considered for converting the Monolithic to Microservices.
+
+What are the key considerations for converting a monolithic application to a microservices architecture?
+
+1. Databse Independent- Each MS should have its own independent DB. This will help to isolate services from each other and make them more scalable.
+- Performace and Latency
+- Isolation and Autonomy 
+- Data Ownership and Security
+
+2. Service Layer Prioritization- Start with the service layer and identify the dependencies between services. This information can be used to decide which service should be migrated first.
+
+3. Entity Grouping -
+
+1. CustomerMS - CustomerRepo
+2. CallDetailsMS - CallDetailsRepo
+3. PlanMS - PlanRepo
+4. FriendFamilyMS - FriendFamilyRepo
+
+7. What is Spring Cloud Consul?
+
+1. Service Registry and Service Discovery
+http://CustomerMS:8080/customer/add
+
+2. Centalized Configuration -
+3. Load Balancing
+
+Consul is a distributed service discovery and configuration management tool developed by HashiCorp. It provides a centralized location for storing and manging configuation data, service registry that enbales service disovery and load blancing.
+
+Step 1- Add the below dependencies-
+1. Consul Discovery
+2. Consul Configuration
+3. 
+  <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-consul-bootstrap</artifactId>
+  </dependency>
+
+8. What is Application Context and What is Bootstrap Context?
+An object that represents the configuration and runtime state of a spring based application. It is the first object creted whenever the spring boot application starts.
+
+Bootstrap Context - It is a special context that is used to bootstap the application context itself. It is creatd before the application context and is used to configure the environment that will help the Application Context to start the application.
+It is typically used to load the properties from the external configuration sources such as Consul server.
+
+Step 2-
+
+bootstrap.yml
+
+server:
+ port: 8080
+
+spring:
+ application:
+  name: CustomerMS
+ cloud:
+  consul:
+    host: localhost   // where is the consul server located
+    discovery:
+      hostname: localhost  // where is your current MS is located
+    config:
+      fail-fast: false  // while registering the application with the consul server
+      enabled: true     // this will help in discovery of this microservice by the consul
+      prefix: config   //it is the name of the root folder in whcih all the config data will                          be added
+      defaultContext: application
+      data-key: data
+      profileSperator: '::'
+      format: YAML
+
+Step 3- Start the consul server and create the key-value pairs.
+
+consul agent -server -bootstrap-expect=1 -data-dir=consul-data2 -ui -bind=     
+    
+
+9. What is Resilience4j?
+
+Resilience4j is a lightweight falut tolerace library for java designed to provide resilience patterns, such as circut breaker, that can be used to improve the reliablity and stablity of the Microservices based application.
+
+
+Minature Ciruit Breaker-  MCB
+
+1. Add the Resilience 4j dependecny.
+2. Create a file i.e. application.yml 
+
+reslience4j.circuitbreaker:
+  instances:
+    FriendFamily:
+      failureRateThreshold: 50
+      minimumNumberOfCalls: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      waitDurationInOpenState: 20s 
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+
+
+- open state - 20s 
+after 20s the ciruit will goes into half-open state - now in this half-open state will check that atleast next 3 request should get passed, if yes then the ciruit will goes into closed state, else the ciruit will goes back into open state and then again we need to wait for next 20s.
+
+- failureRateThreshold - specifies the percentage of failed calls that will cause the CB to go into the open state.
+- minimumNumberOfCalls - min no of calls that must be made before the failure rate is calculated.
+- halfOpneState- the phase after 20s in the open state.
+- permittedNumberOfCallsInHalfOpenState - specifies the no of calls that are allowed to be made while the circuit breaker is in the half open state.
+- waitDurationInOpenState - specifies the amount of time that the CB will wait in the open state  before attempting to transition to the half-open state.
+
+- automaticTransitionFromOpenToHalfOpenEnabled - specifies whether the CB should automatically trasition from the open-state to half-open state.
+
+
+Step - 3 
+
+
+@CircutBreaker(name="FriendFamily", fallBackMethod="addFriendFallBack")
+@PostMapping("/addFriend")
+public ResponseEntity<FreindFamily> addFriend(long custId, long friendNumber)
+{
+
+}
+
+
+public ResponseEntity<FreindFamily> addFriendFallBack(long custId, long friendNumber, Throwable t)
+{
+
+
+}
+
+Throwable - is passed to the fallback method so that we can log the exception that occured while trying to add the friend.
+
+10. What is Synchronous and Asynchronous communication?
+
+1. Synchronous- also know as request-response  communication, involves a client making a request to a server and waiting for a response before continuing.
+This approaach is often used when the client requries an immediate response from ther srever to complete it's task.
+
+Total time for Plan 5055
+Total time for Friend 266
+Total Overall time for Request 5332
+
+2. Asynchronous - it involves a client sending a message or request to the server without waiting for a response. Insted, the server processes the request at a later time. This approach is often used when the client can proceed without an immediate response from the server.
+Total time for Plan 0
+Total time for Friend 0
+Total Overall time for Request 7
+
+line 1
+line 2
+line 3  - main thread
+
+Future<Integer>  future= Future.of(()->1+2); - main thread - but the computation of the future object will be done by the sub-thread created by the main thread.
+
+line 4
+line 5
+
+future.onComplete(result->
+{
+if(result.isSuccess()) SOP(result.get());
+else SOP(result.getCause().getMessage());
+})
+
+Integer result=future.get();
+
+line 6
+line 7
+
+get() - get() will block the thread until the reslut is ready, which is why it's often recommended to use the onComplete() method insted, and handel the request asynchronously.
+
+onComplete() - The onComplete() method does not block the thread. Instead, it registers a callback that will be executed asynchronously when the Future completes. This means that the main thread can continue running while the asynchronous computation is running in the background and the callback will be executed when the reslut is available.
+
+
+11. What is an API gateway?
+
+An API gateway is a software layer that sits between your API's and the client application.
+It acts as a central point of control, routing and managing requests from the client application to the appropriate backend API's.
+
+The main purpose of API gateway is to simplify the management and operations of Multiple API's-
+1. Authentication
+2. Rate Limiting - controlling the number of request sent by a client in a particular time frame.
+3. Caching - 
+4. Logging
+5. Monitoring
+6. Transformation
+
+Json -> String 
+
+Steps - 
+1. Add the API gateway dependency.
+ - Consul Config
+ - Consul Discover
+ - Spring Cloud Starter Bootstrap
+
+2. Create the bootstrap.yml 
+
+server:
+ port: 1500
+
+spring:
+ application:
+  name: Gateway
+ cloud: 
+  consul:
+   host: localhost
+
+3. create the application.yml
+
+spring:
+ cloud: 
+  gateway:
+    discovery:
+     locator:
+      enabled: true
+    routes:
+      - id: CustomerMS
+        uri: lb://CustomerMS
+        predicates:
+         - Path=/customer/**
+        filters:
+         - stripPrefixes: /gatway
+      - id: PlanMS
+        uri: lb://PlanMS
+        predicates:
+         - Path=/customer/**
+        filters:
+         - stripPrefixes: /gatway
+
+http://Gateway:8080/customer/12
+
+lb://CustomerMS:8001/customer/12
+
+InfyGO Monolothi  -> Microservices
+
+FlightServiceMS                             -    FlightsRepository
+LoginServiceMS and RegistrationServiceMS    -    CustomerRepository
+PassengerServiceMS                          -   PassengerRepository
+ 
+TicketServiceMS                             -   TicketRepository
+CreditCardMS                                -   CreditCardRepo

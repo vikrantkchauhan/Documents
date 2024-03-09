@@ -1,0 +1,349 @@
+		<!--Spring beans dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+		
+		<!--Sprin core dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+		
+		<!--Spring context dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+		
+		<!--Spring commons logging dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		
+		<!--Spring aop dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+
+
+		<!--Spring dependency for aspectj like around aspect-->
+		
+		<!-- https://mvnrepository.com/artifact/aspectj/aspectjtools -->
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+
+		<!--MySQL jdbc connector api-->
+		
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
+
+
+		<!--_Microsoft  jdbc dependency-->
+
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>12.4.1.jre8</version>
+		</dependency>
+
+		<!--Spring JDBC dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+		
+		<!--Hikari cp  connection pool library--> 
+		// if no logger provided then it will set to default. 
+		//So while using this have to provide the logger also  that is sldj4 jars
+		
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+
+
+		<!--Hibernate dependency-->
+		
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.7.Final</version>
+		</dependency>
+
+
+		<!--Spring orm for hibernate support-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>5.3.18</version>
+		</dependency>
+
+		<!--Jakarata JPA for hibernate support-->
+		
+		<!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
+		<dependency>
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+
+		<!--Jakarata transaction APi for Spring hibernate support-->
+		
+		<!-- https://mvnrepository.com/artifact/jakarta.transaction/jakarta.transaction-api -->
+		<dependency>
+			<groupId>jakarta.transaction</groupId>
+			<artifactId>jakarta.transaction-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+===============================================================SpringBoot=====================================================
+
+
+		<!--If no archetype selected-->
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.12.1</version>
+		</dependency>
+
+		<!--SpringBoot Starter Web-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+		<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>3.2.1</version>
+		</dependency>
+		
+		
+		<!--Jasper for converting the jsp to servlt-->
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>10.0.8</version>
+		</dependency>
+		
+		<!--For supporting the servlet-->
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<!--Lombok Dependency-->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!--Jackson Dependency---->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId> // changed here for databind , by default here is core
+			<version>2.16.1</version>
+		</dependency>
+
+---------------------------------------------------
+
+<!--Spring security core-->
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-core</artifactId>
+    <version>5.8.6</version>
+</dependency>
+
+
+<!--Spring security congif--->
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>6.0.5</version>
+</dependency>
+
+<!---Spring security web--->
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>6.0.6</version>
+</dependency>
+
+
+
+<!--Spring web mvc-->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.3.18</version>
+</dependency>
+
+
+<!--Spring form library for MVC -->
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+    <version>6.0.4</version>
+</dependency>
+
+
+<!--Hibernat evalidator dependency for form validation-->
+<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.2.1.Final</version>
+</dependency>
+
+
+
+====================Spring tiles dependency==============================
+<!--Tiles API--------------->
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-api -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-api</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+
+<!---JSP tiles--------->
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-jsp</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+<!----Servlet tiles-------->
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-servlet</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+
+<!--JSTL api --->
+<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>3.0.0</version>
+</dependency>
+
+
+<-------------------------Done----------------------->
+
+
+<!--File upload dependency-->
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.5</version>
+</dependency>
+
+
+
+
+
+
+===============================================Annotations=========================
+@SpringBootApplication:Indicates a configuration class that declares one or more @Bean methods and also triggers auto-configuration and component scanning. This is a convenienceannotation that is equivalent to declaring @SpringBootConfiguration, @EnableAutoConfiguration and @ComponentScan.
+
+
+//spring.main.web-application-type=none  -- set this in application.properties files under resources folder to treat as a standalone app
+//spring.mvc.view.prefix=/Views/
+//spring.mvc.view.suffix==.jsp
+//server.port=9090
+
+
+//set http to https in case of arror in pom.xml in sts
+//Always set test dependency at bottom in sts for a springboot application
+
+//Donot put ""
+spring.datasource.url =jdbc:mysql://localhost:3306/springbootjdbc
+spring.datasource.username="root"
+spring.datasource.password ="root"
+
+
+//Class.forName("com.mysql.cj.jdbc.Driver"); //loading the driver and registering it for mysql
+//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); // loading the driver and registering it for microsoft server
+//config.setDriverClassName("com.mysql.cj.jdbc.Driver"); 
+//config.setJdbcUrl("jdbc:mysql://localhost:3306/studentinfo");
+//config.setUsername("root");
+//config.setPassword("root");
+
+
+===========================================
+	@PostMapping("/w/{name}/{pass}")
+	public String demo3(@PathVariable("name") String name, @PathVariable("pass") String pass) {
+		
+		return "hi"+name+"pass" +pass;
+	}
+
+	// values are in the request as key value
+	// that is param value
+	// aS REQUEST PARAM
+	@GetMapping("/w")
+		public String demo4(@RequestParam("name") String name, @RequestParam("pass") String pass) {
+		return "hiname is :"+name +"password is "+pass;
+	}
+
+
+============================================
+Maven build path dependency
+<plugins>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.3.1</version>
+</plugin>
+</plugins>
+			

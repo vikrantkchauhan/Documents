@@ -1,0 +1,52 @@
+==>Select type as war for proper folder structure
+
+==>Add hhtps instead of http in pom.xml if error
+==>Add the below dependencies
+
+https://stackoverflow.com/questions/20602010/jsp-file-not-rendering-in-spring-boot-web-application
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+==>Donot use @RestController annotation it will as for request and response by default
+==>	Do not put jdbc url in ""
+spring.mvc.view.prefix= /views/
+spring.mvc.view.suffix= .jsp
+
+
+
+#=============Dadabases resources==================
+
+spring.datasource.url =jdbc:mysql://localhost:3306/springbootjdbc?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+spring.datasource.username=root
+spring.datasource.password =root
+
+
+
+
+==>	
+
+
+---------------------------------
+Add this if pom.xml shows this error
+Multiple markers at this line - Could not initialize class org.apache.maven.plugin.war.util.WebappStructureSerializer -
+ No grammar constraints (DTD or XML Schema).
+
+<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>3.3.1</version>
+		</plugin>
+		</plugins>
+

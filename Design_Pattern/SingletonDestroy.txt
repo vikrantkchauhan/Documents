@@ -1,0 +1,52 @@
+
+3 ways to Destroy Singleton Design Pattern -
+1 - Using Serializable Interface
+2 - Using Cloneable Interface
+3 - Using Reflection API
+
+In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance. This is useful when exactly one object is needed to coordinate actions across the system. The term comes from the mathematical concept of a singleton.
+
+Critics consider the singleton to be an anti-pattern in that it is frequently used in scenarios where it is not beneficial, introduces unnecessary restrictions in situations where a sole instance of a class is not actually required, and introduces global state into an application.
+
+The singleton design pattern is one of the twenty-three well-known "Gang of Four" design patterns that describe how to solve recurring design problems to design flexible and reusable object-oriented software, that is, objects that are easier to implement, change, test, and reuse.
+
+The singleton design pattern solves problems like:
+
+How can it be ensured that a class has only one instance?
+How can the sole instance of a class be accessed easily?
+How can a class control its instantiation?
+How can the number of instances of a class be restricted?
+How can a global variable be accessed?
+The singleton design pattern describes how to solve such problems:
+
+Hide the constructor of the class.
+Define a public static operation (getInstance()) that returns the sole instance of the class.
+The key idea in this pattern is to make the class itself responsible for controlling its instantiation (that it is instantiated only once).
+The hidden constructor (declared private) ensures that the class can never be instantiated from outside the class.
+The public static operation can be accessed easily by using the class name and operation name (Singleton.getInstance()).
+
+The abstract factory, factory method, builder, and prototype patterns can use singletons in their implementation.
+Facade objects are often singletons because only one facade object is required.
+State objects are often singletons.
+Singletons are often preferred to global variables because:
+They do not pollute the global namespace (or, in languages with nested namespaces, their containing namespace) with unnecessary variables.
+They permit lazy allocation and initialization, whereas global variables in many languages will always consume resources.
+
+Singleton classes break object-orientated design principles
+It cannot be inherited from. To add new functionality, a new class cannot be descended to contain that functionality, breaking Separation of Concern.
+No control over creation. It is impossible to tell if a reference is of an existing instance or a new instance.
+Prevents dependency injection. As there is only a single instance of the class, a dependency cannot be injected into it. If done via a property, the dependency is changed for all references to that instance.
+
+Singleton classes do not allow for test-driven development (TDD).
+As there is no control over creation, a "clean" instance of the object cannot be used for each test.
+Without dependency injection mock objects cannot be used in tests.
+
+An implementation of the singleton pattern must:
+
+ensure that only one instance of the singleton class ever exists; and
+provide global access to that instance.
+Typically, this is done by:
+
+declaring all constructors of the class to be private; and
+providing a static method that returns a reference to the instance.
+The instance is usually stored as a private static variable; the instance is created when the variable is initialized, at some point before the static method is first called. The following is a sample implementation written in Java.
