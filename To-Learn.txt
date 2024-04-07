@@ -1,10 +1,40 @@
 
-Flow:
-CI/CD -> AWS -> Spring Cloud -> Serverless 
-Redis -> kafka
+Linux
+Git
+Docker
+Kubernates
+AWS services handson
 
-Daily:
-Junit 5
-Spring Framework API's(Boot, Hibernate, Spring JPA, Spring Security, API, Microservices,Rest Template)
-Java Daily (Concepts)
-Leetcode Daily (CP)
+13-April
+
+DSA:GFG, College Wallah
+
+16-April
+
+Java Basic
+Collections
+Streams
+Generics
+Optional
+serialization and desrialization
+Ecception handling
+Concurrency(Multithreading)
+Junit
+Kafka
+Redis
+
+20-April
+
+Spring Core(AOP, security, Jackson)
+MVC
+Spring DAO
+SpringBoot
+Hibernate
+Rest Api
+Microservices
+
+26-April
+React
+
+
+
