@@ -1,0 +1,21 @@
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ReactJS>>>>>>>>>>>>>>>>>>>>>>>>
+->Open source library for building user interfaces
+->Not a framework
+->Focus on UI
+->Rich developer community
+->Created and maintained by facebook
+
+
+==>Component based architecture
+eg: header, footer, sidebar, menu ets
+
+==>React is declarative
+i,e :Tell react what you want ans React will build the UI
+
+eg: Declarative- Telling the artist to build a art piece and the artist will do that on its own
+
+Imperative: eg telling a child step by step to build a image
+
+==> React native for mobile dev

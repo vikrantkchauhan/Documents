@@ -1,0 +1,34 @@
+=======================Data Structures by Dinesh varyani=================
+
+Data Structures: 2 types 
+1. Linear(Arrays, LinkedList, Stack, Queue)
+2. Non Linear (Tree , Graph)
+
+
+Algorithm:
+Set of instructions to perform a task or to solve a problem
+
+Asymptotic analysis helps in evalutaing performance of an algorithm in terms of space and time complexity.
+
+Time complexity: time taken for the execution of algorithm
+Space complexity: space taken for execution of the algorithm(auxiliary space)
+
+Time complexity: n^x > (x)n > n > nlogn> logn
+
+Best(Omega)->Lower bound 
+
+Avegrage(Theta)-> Average bound
+
+Worst(BigO) ->Upper bound (Rules: Single processsor, Sequential execution, operation takes constant 1 unit of time, drop lower order terms from eg)
+
+
+=========================Array Datastructures==============================
+
+
+
+
+
+
+
+
+

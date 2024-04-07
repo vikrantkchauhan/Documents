@@ -1,0 +1,5 @@
+----------Generics In Java------------
+
+==>Introduced in java1.5
+==>Help in type-safe, resuable, flexible , efficient , maintanable code
+==>Used exclusively in collections

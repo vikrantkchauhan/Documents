@@ -1,0 +1,63 @@
+[10:25 AM] Mhatre, Nikhil
+public class Test1 { 
+    public static void main(String[] args) { 
+       Dog dog = new Dog(); 
+       dog.voice("bark"); 
+    } 
+} 
+class Animal { 
+    public void voice(String voice) { 
+        System.out.println(voice); 
+    } 
+    Animal(String voice) {  } 
+} 
+class Dog extends Animal { 
+    Dog() {   } 
+    public void voice(String voice) { 
+        System.out.println(voice); 
+    } 
+} 
+
+
+
+private class Show{ 
+    void display(){ 
+        System.out.println("Inside display method."); 
+    } 
+    public static void main(String[] args) { 
+        Show show = new Show(); 
+        show.display(); 
+    } 
+} 
+
+
+
+public class MainQs { 
+int calc() { 
+try { 
+         return 10; 
+      } catch(Exception e) { 
+         return 20; 
+      } finally { 
+         return 30; 
+      } 
+   } 
+   public static void main(String[] args) { 
+   MainQs cr = new MainQs(); 
+      System.out.println(cr.calc()); 
+   } 
+ 
+} 
+
+[10:41 AM] Mhatre, Nikhil
+
+String s1 = new String("KPMG");
+
+[10:41 AM] Mhatre, Nikhil
+
+String s2 = "KPMG";
+
+
+
+
+

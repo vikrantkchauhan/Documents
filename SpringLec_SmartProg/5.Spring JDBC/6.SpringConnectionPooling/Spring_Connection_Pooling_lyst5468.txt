@@ -1,0 +1,35 @@
+=> Connection Pool :-
+	-> A connection pool is a group of reusable connection objects for a particular database
+	-> When an application requests for connection object, it obtains one from the pool
+	-> When an application closes the connection, the connection object returns back to the pool
+
+
+=> Connection Pooling :-
+	-> Connection Pooling is a feature or technique that involves managing and reusing existing database connection objects in connection pool, instead of creating new connections from scracth every time an application interacts with the database
+	-> This improves the application performace and resource utilization by minimizing the time and resource needed to establish the database connection
+	
+	-> Real World Example :
+		= Cooking in Restaurents
+		
+	-> Different ways to provide connection pooling :-
+		1. Using third-party connection pooling libraries
+			= HikariCP
+				- Known for its high performance and lightweight nature, making it suitable for modern application
+				- "HikariDataSource" is an implemented class for DataSource
+			= Apache Commons DBCP
+				- A widely used connection pooling library with configurable options for connection management
+				- "BasicDataSource" is an implemented class for DataSource
+			= C3P0
+				- It offers features like connection testing and customization options
+				- "ComboPooledDataSource" is an implemented class for DataSource
+			= BoneCP
+				- It is also lightweight connection pooling library designed for speed and efficiency
+				- "BoneCPDataSource" is an implemented class for DataSource
+			  etc
+		2. Application server-provided connection pooling
+			= Many application servers i.e. Apache Tomcat, WildFly etc come with built-in connection pooling capabilities
+		etc
+		   
+	-> NOTE : Spring does not provide in-built connection pooling feature but we can integrate third-party connection pooling libraries with Spring
+	
+====================================================================================================

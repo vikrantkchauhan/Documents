@@ -1,0 +1,10 @@
+
+Flow:
+CI/CD -> AWS -> Spring Cloud -> Serverless 
+Redis -> kafka
+
+Daily:
+Junit 5
+Spring Framework API's(Boot, Hibernate, Spring JPA, Spring Security, API, Microservices,Rest Template)
+Java Daily (Concepts)
+Leetcode Daily (CP)

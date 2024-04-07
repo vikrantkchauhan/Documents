@@ -1,0 +1,16 @@
+
+========================JUNIT===============================
+
+---Writing code---
+1. Analyze the requirement
+2. Design the aproach
+3. Write the code
+4. Write the test -> Run the test
+5. If success then push to dev->cert->UAT
+6. Release->Support->Enhancements
+7. Documentation at each phase (LLD, HLD)
+
+
+---Testing is to make sure that the code works in future also
+-- When we make changes to the system(so that our basic functionality works properly)
+

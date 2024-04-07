@@ -1,0 +1,89 @@
+package dsa.arrays;
+
+
+//Exception handling
+//creating custom runtime exception class 
+
+class nameNotValid extends RuntimeException{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	nameNotValid(){
+		super();
+		System.out.println("Name is not valid message as no expilcit message is passed to the constructor");
+	}
+	nameNotValid(String msg){
+		super(msg);
+			}
+}
+
+class checknamecompile extends Exception{
+	
+	
+	checknamecompile(){
+		super();
+		System.out.println("No stirng message is provided");
+	}
+	
+	checknamecompile(String msg){
+		super(msg);
+		
+	}
+}
+public class Demo2 {
+	
+	
+	
+	//thwrowing tht object of the exception to be handled manually in the calling method
+	void checkValidOrNot(String name) {
+		if(name.contains("Chuahan")) {
+			System.out.println("Name is valid");
+		}else {
+			//throw new nameNotValid();
+			//or passing custom msg
+			throw new nameNotValid("Does not contain chauhan");
+		}
+	}
+	
+	//throwing it as compile time exception using the throws keyword
+	void checkValidName(String name) throws  checknamecompile {
+		if(name.contains("Chauhan")) {
+		   System.out.println("Name is valid");
+		}else {
+			throw new checknamecompile();
+		}
+	}
+	
+	//claiing method
+	public static void main(String[] args) throws checknamecompile {
+		Demo2 obj = new Demo2();
+		String name ="Vikrant Chauhan";
+		String name1 ="Sashi";
+		System.out.println("Using the runtime method based");
+		try {
+			obj.checkValidOrNot(name);
+			obj.checkValidOrNot(name1);
+		}catch(nameNotValid e){
+			e.printStackTrace();
+		}finally {
+			System.out.println("Execution completes");
+		}
+		
+		////////////////////////
+		System.out.println("Using compile time method");
+		try {
+			obj.checkValidName(name);
+			obj.checkValidName(name1);
+		}catch(nameNotValid e) {
+			e.printStackTrace();
+		}finally {
+			System.out.println("Execution is complete");
+		}
+	}
+	
+	
+	
+
+}

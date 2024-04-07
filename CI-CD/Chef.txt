@@ -1,0 +1,71 @@
+---------CHEF----------------------
+Confuguration management tool.
+1. To cinfigure your servers, machines or any other machine based on cloud or bare metal.
+2. Earlier this work has to be done by System Administrators now done by devops engineer.
+3. Chef is a administration tool used in ops part of the Devops.
+4. Turns your infrastructure into code.(i.e it contains code for infra)
+
+
+
+------------------------------------
+Nodes: Servers
+Configuration server: Master server containing all the config info
+
+Two types of confuguration management tools
+1. Push based: Push configuration server pushed the congiguration to the nodes(machines) eg-Ansible , Saltstack
+	->Configuration is easy
+	->Hard to scale as while adding new node had to done manually
+2. Pull based: Nodes check with the pull configuration servers continuously and periodically and fetchethe configuration data from it(eg. version update, antivirus update etc) eg- Chef, Puppet
+	->Configuration is comples
+	->Easy to scale(ie adding resources)
+
+==========Chef is a pull based configuration tool============
+
+Infrastructure as a code(IAAS)
+
+-------------------------------------
+Chef written in Ruby and Erlang.
+Recipes are written in Ruby.
+
+----------Chef Components-------------
+1.Workstation(Like a IDE)
+	->Used to write the code for configuration ans that is called as Recipe.
+	->Recipe contains info for various configurations
+	->CookBook: Cluster of recipe(config code)
+	->Chef-supermarket:repo containing numerous recipes.
+	
+1a. Knife(tool used to transfer/connect workstation with chef server)
+
+2.Chef Server(can be bare metal or remote based)
+	->Cookbook are stored on Chef Server.
+	
+2a. Knife(tool used connect chef-server with nodes) a CLI tool.
+		->Process of connecting the chef server with node is called bootstrapping
+
+3. Nodes(n number)(Chef-Client)
+
+4. Ohai: Present on each node contain the info of the current configuration of the node(like version, software names, last updates etc)
+
+==>Chef server connects with Ohia to get the configuration info of the node(Chef client) and is updated by the chef server also in case of any updates pushed(eg new user added, any software changes)
+
+----------------------------------------
+Features of Chef.
+1. Idempotency: Only the updated configuration get changes on the chef client not the all. This makes the process fast
+	eg their are two users present on the client and a new user is added to chef server so only that user will be pulled by the client not anything else.
+	
+=================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

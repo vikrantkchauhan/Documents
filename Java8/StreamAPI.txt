@@ -1,0 +1,36 @@
+Stream API
+
+Non-Terminal Operations
+filter()
+map()
+flatMap()
+distinct()
+limit()
+peek()
+sorted()
+skip()
+average()
+
+
+
+Terminal Operations
+anyMatch()
+allMatch()
+noneMatch()
+collect()
+count()
+findAny()
+findFirst()
+forEach()
+min()
+max()
+reduce()
+toArray()
+toList()
+
+Scope :
+
+Public :Everywhere
+Protected: Within the package and outside in case of inheritence
+default: Within the package only
+private: within the class only

@@ -1,0 +1,103 @@
+Map<String,Integer> m = new HashMap<>();
+m.put("abc", 100);
+m.put("abc", 200);
+
+int x = m.get("abc");
+=====================================================
+
+class X {
+void show();
+}
+
+class Y extend X {
+void show() {
+//
+}
+}
+
+class A implements X,Y{
+public void show() {
+//
+}
+}
+
+=====
+
+interface X {
+void show();
+}
+
+interface Y{
+void show();
+}
+
+class A implements X,Y{
+public void show() {
+//
+}
+}
+
+
+================================
+
+Employee
+Id   Name Salary deptcode
+111  AAA  5000    Engg
+222  BBB  9000    HR
+333  CCC  4500    HR 
+444  DDD  3000    Admin
+555  EEE  2000    Engg 
+
+Department
+Code    name
+------------
+Engg    Engineering
+HR      Human Resource
+Admin   Admin
+
+
+1S. Name of employee and his departnamee 
+
+Select e1.name as Name , d.name as Department from 
+Employee e1 join Department d 
+where 
+e1.deptcode == d.Code;
+
+Select average(Salary) , deptcode from Employee groupBy deptCode ;
+
+============================================================
+
+String s="abc";
+String s1= "abccd";
+
+
+boolean isUniqueChars(String s) {
+//
+boolean status = false;
+for ( int i =0; i<s.length();i++){
+    for(int j =i+1; j<s.length();j++){
+    
+        if (s.charAt(i)==s.charAt(j)){
+              status= false;
+              break;
+              }else{
+              status= true;
+              }
+       }
+   }
+   return status;
+              
+    
+       
+       i =2 , c
+       j=3 ;c
+        
+
+}
+
+
+
+
+
+
+

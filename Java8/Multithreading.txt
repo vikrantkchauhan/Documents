@@ -1,0 +1,80 @@
+package dsa.arrays;
+
+class ThreadT extends Thread {
+
+	public void run() {
+		System.out.println("From created thread using thread class");
+		System.out.println(Thread.currentThread().getName());
+	}
+}
+
+class ThreadI implements Runnable {
+
+	@Override
+	public void run() {
+		System.out.println("From created thread using interface");
+		System.out.println(Thread.currentThread().getName());
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) {
+
+		System.out.println("From main thread");
+		System.out.println(Thread.currentThread().getName());
+		
+		// Using thread class
+		ThreadT t1 = new ThreadT();
+		t1.start();
+		
+		// Using interface
+		ThreadI obj = new ThreadI();
+		// Thread t2 = new Thread(new ThreadI());
+		// OR
+		Thread t2 = new Thread(obj);
+		t2.start();
+		
+		//Using the lambda expression
+		Thread t3 = new Thread(
+				()->{System.out.println("From thread created using the lambda");
+				System.out.println(Thread.currentThread().getName());}
+				);
+		
+		t3.start();
+		
+		//Using the annonymous inner class
+		
+		Thread t4 = new Thread(
+				new Runnable() {
+					
+					@Override
+					public void run() {
+						System.out.println("From thread created using annoymous class");
+						System.out.println(Thread.currentThread().getName());
+						
+					}
+				}
+				);
+		
+		t4.start();
+		
+		//or
+		Runnable r = new Runnable() {
+			
+			@Override
+			public void run() {
+				System.out.println("Created using the annoymous inner class second method");
+				System.out.println(Thread.currentThread().getName());
+			}
+		};
+		
+		Thread t5 = new Thread(r);
+		t5.start();
+				
+			
+		
+		
+
+	}
+}
