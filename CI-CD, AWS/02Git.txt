@@ -1,0 +1,152 @@
+==============================Git, GitHub=============================
+
+------------Stages------------
+Working directory
+Staging directory
+Local Repository
+
+
+Working dir(workspace) -> staging directory(git add . , master branch) -> Local Repo(git commit -m "") -> Git hub Push(main branch)( git push -v origin master:main)
+
+-----------------------
+
+User1 (Local git) --------push/pull-------> Central repo(Github)<------push/pull------User2(local git)
+
+=====================Install Git on AWS====================
+
+sudo su
+yum update -y
+yum install git -y
+git --version
+
+
+---------------To configure git---------------------
+//MyGit token 
+//TO add git token
+Profile->Settings->Developer mode-> Access token-> classic -> select all the radio button -> generated and reate the link
+
+
+for windows:
+
+git init 
+git config --global user.name "vikrant"
+git config --global user.email "vchauhan2025@gmail.com"
+git add filename
+git commit -m "mesage"
+git remote  add origin url
+git remote set-url origin https://<githubtoken>@github.com/<username>/<repositoryname>
+git config --global http.sslbackend schannel  // avoid this on linux as it is bydefault set
+git push -v origin master:main //master is local main is github based
+git pull -v origin main --allow-unrelated-histories
+
+
+=======================Git commands===================
+git status // for status of the git repo you are tracking
+git log 
+git show <commit-id> //show the commit info
+
+git remote -v // gives info of the remote location data
+
+==========================gitignore====================
+vi .gitignore
+*.css
+*.java
+etc
+
+git add .gitignore
+git commit -m "Added gitignore file"
+
+git push -v origin master:main
+
+============================Git Branch========================
+
+!--------------Branch1-----
+!                          (Merge)\>
+Main Branch====================
+
+gitint creates master branch by default
+
+Default local branch is master.
+
+=> Files created in workspace will be visible in any of the branch workspace untill you commit them, agter that they will be available to the particular branch only.
+
+git branch // shows the list of available branches  * containing branch is current branch
+git branch name // creates a new branch 
+git log --oneline // shows all the commit in one line
+
+====To switch branch====
+git checkout branchname
+
+git branch -d  branchname // provided branch will be deleted agter merging its changes with main.
+
+git branch -D branchname // forcefully deletes the branch 
+
+
+===================Git merge==================
+Also called as pulling mechanism that is pulling the changes of another branch to other brach
+
+git merge branchname // and if we are in master branch and want to merge branchname to master
+
+==================Merge Conflict=================
+Occures when data is present at same location in two files in the same repo during merging . Git got confused which file data to keep while merging at top or botton.
+ 
+ Have to put manually by ourself where to put the data.
+ 
+ 
+==================Git stash===================
+Temporary storage in the current local repo only.
+It save the current data to stash location and your working directory becomes clean
+
+==>Stash applied only to modified file not to the new added file
+git stash // added your workspace file to the stash location from your working directory it cleans you file make them empty
+
+
+git stash list // siaplays list of the added stash files
+output 
+0  latestone changes
+1
+2
+etc
+
+git stash apply stash@{number from list} // copy the data from stash loc to your working directory
+git stash clear // clear your stash location
+
+make changes to you file.
+put them to stast loc, this will clear you file and you can make changes in it again 
+then commit you changes to repo
+and pull back the changes from git stash again to local based on id
+
+
+==========================Git reset==========================
+Will work only till the staging location
+
+git reset filename // will remove the file from staging location
+git reset . //will remove all the files from the staging loc
+
+git reset --hard //will remove all the files from staging and working ares automatically
+
+
+7======================Git revert==========================
+Will work on staging location also
+to revert the changes from the commited loc
+To revert the commited changes done by developer
+
+=> Help to undo the commited changes(Will not delete the id but will align you to the previous commit) we cannot delete a commit but revert will set to previous commit id
+
+Using the revert a new commit id is generated bull files go back to previous version
+
+git revert <commit id> // will set back to the provided commit id 
+
+=============================Git Clone=======================
+git clone <url> //will clone the github repo to your local machine 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+DSA List
+
+Basics:
+
+Factorial
+Palindrome
+Prime number
+Fibonacchi
+Swap two numbers
+Average of numbersSum of natural numbers
+Largest number
+Display odd numbers from 1 to 100
+
+String:
+
+Palindrome
+Reverse
+Anagram
+Substring
+Frequency of numbers
+String methods
+String , String buffer , String builder
+String constant pool
+Individual characters from string
+Uppercase to lowercase
+
+
+=====================GFG==================
+Easy:
+
+
+
+
+

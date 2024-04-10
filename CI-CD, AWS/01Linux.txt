@@ -1,0 +1,251 @@
+==================================Linux==============================
+
+Unix-> IBM-AIX, Sun-Solarix, Mac os, HP-ux, Linux.
+Linux-> Redhat, Fedora, Debian, Ubuntu, Centos, Amazon Linux, Kali linux etc.
+
+H/W->Kernel->Shell->Users
+
+Folder->Directory
+Admin-> root user
+Software ->Package
+
+
+File system/hierarchy
+
+Windows case :\ backward slash
+Linux case: / forward slash
+
+Windows:
+					C:\
+	Program Files,  Users, Program x86, perflogs
+			
+Linux:
+
+		        	\
+	/root, /home, /boot, /etc, /usr, /bin
+	
+	
+/home: home directory for other users
+/root: home directory for root users
+/boot: bootable files for linux 
+/usr : default software installation directory
+/etc: contains configuration files
+/bin: contains commands used by all users
+/sbin: contains commands used by root user
+/opt: optional application software packages
+/dev: essential device files like the drives etc
+
+===========================================
+Commands: linux is case sensitive
+
+
+How to create files in linux.
+cat, touch, vi, nano
+
+1. Cat
+
+a. Create file
+b. Concatenate file
+c. copy files
+d. tac : displays content in reverse order
+
+cat> file enter  //creates the file
+ctrl+D to save the content and exit cat cmd
+
+cat file // to display the content
+
+cat >> file //to edit the existing file 
+
+cat file1 file2 > file3 // concatenate the content of file1 and file 2 to the file3 
+
+tac filename // displays the content in reverse order
+
+
+
+2. touch file1 file2 etc : creates empty files 
+
+touch // creates the empty file , change all the time
+
+stat file // displays timestamps information of the file
+
+timestamps: Access time(when was accessed)
+			Modify time(updation time)
+			change time(metadata info)
+			
+touch file //changes all the three timestamps
+
+touch -a file // changes the access time only
+touch -m file //changes the modify time only
+
+
+3. vi editor
+
+vi file //open the file
+i // enter insert mode
+esc // enter escape mode
+:w // save the file
+:wq //save and quit the file
+:q //quit the file without saving
+:q!//force quit no save
+
+		
+===============================Steps to connect to EC2 instanse=========
+1. launch the instance
+2. Select the os distribution: for amazon linux : user is ec2-user
+								for ubuntu: ubuntu is the user
+								
+3.Create a private key pair on AWS save the private key use that for generating the private key of your own
+
+4. Open putty key gen :
+load the private key.
+put the parraphase used wile entering server
+save the private key into your system/hierarchy
+
+5. Open p]utty
+put public IPV4 address to url
+go to connection->ssh->auth->credentials->private key for authentication-> browse the path of the file and sone.
+
+6. Login as ubuntu or ec2-user accordingly
+
+7. sudo su // for super user access
+
+8. Terminate or close th insatance.
+
+13.127.105.176
+
+=====================================================Complete=============
+
+Directory:
+
+mkdir dir // creates the directory
+mkdir dir1/dir2/dir3 // creates diretory under the directory
+cd dir // changes the directory 
+cd .. or cd ..//..    // to parent directory
+mkdir dir1 dir2 dir3 //creates multiple directory within the system/hierarchy
+
+
+//to create hidden file or directory
+touch .file // create hidden file
+mkdir .dir1 // creates hidden directory 
+
+ls -a //displays all the files hidden etc
+
+
+//copy the file
+cp sourcefilepath destinationfilepathinfo
+
+//cut and paste
+mv sourcepath destinationpath
+
+//rename the file
+mv oldname newname
+
+//to remove file or directory even non empty paren child everything
+rm -rf namedirorfile
+
+====================
+less file // displays a single page content of file 
+			q// to get out of it
+			
+head file1 // top 10 line  info
+
+tail file1 // last 10 line of the file
+
+================Misc
+ifconfig // ip info
+hostname -i //hostname info
+cat /etc/os-rel* //info of the os
+
+================Yum :to install the pacakages=============
+yum install httpd // to install the https
+yum update httpd // to update the https
+yum remove httpd // to remove the server
+service httpd start // to start the service
+yum install httpd -y //put y to auto put y during requirement of installation
+yum list install // show all the installed package info
+
+which package name // to show wether the software is installed
+whoami // who is the user
+
+
+echo // to display message
+echo "hello" > file // save content to the file
+echo "msh" >> file // update the existing file
+
+echo >> file // delet all the content of the file
+
+=====================grep=============================
+grep text fileordir
+grep text /etc/dir1/file
+
+
+sort file // sort the file alphabetically
+
+=====================================user===========
+useradd name // create user 
+cat /etc/passwd // to view the users
+
+groupadd groupname // creates the groupadd
+cat /etc/group //displays all group information
+
+
+gpasswd -a vikrant groupname // add single user to the group
+gpasswd -M user1 user2 user2 groupname // add multiple users to the group
+
+====================Links============
+ln -s file1 softlinkpath //create a shortcut of the file at desired loc
+
+ln file backupfilepath //creates the backup of file at provided backupfilepath location
+
+==================tar==============
+tar // to put multiple files at single location
+tar -cvf nam.tar dir1/dir2/dir3 //will create single tar file name nam.tar  of the dir1 and its child
+	c: create
+	v:verbose
+	f:forcefully
+	
+gzip filename or file.tar // will greate a zip file of the file or tar file
+
+gunzip filename // to unzip the file
+
+tar -xvf dir // to untar the directory
+
+wget url // to download the file to linux
+yum install loc // will install the file
+
+
+=================Access modes=================
+d:directory
+-:file
+r: read 
+w: write
+x: execute
+
+directory: owner/rootuser : group : others : symbolic links : owner : group : filesize in bytes : data : time : name of file
+drwxr-xr-x 2 root root 4096 Apr  8 12:09 d    
+-rw-r--r-- 1 root root   45 Apr  8 11:28 file1
+-rw-r--r-- 1 root root  106 Apr  8 11:35 helloworld.java
+-rw-r--r-- 1 root root  100 Apr  8 11:31 test
+
+chmod //change mode/permission
+chown //change owner
+chgrp //change group
+
+========================How to change permission==========
+r: read ,value =4
+w: write , value = 2
+x: execute. value =1
+
+chmod 777  // all access to everyone
+chmod 421 //read to owner , write to group , execute to others
+
+chown vikrant filename //changes owner to vikrant 
+chgrp groupname filename //changes froup to provided
+
+==========================Done==============================
+
+			
+
+
+
+

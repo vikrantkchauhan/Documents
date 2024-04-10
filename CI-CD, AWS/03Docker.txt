@@ -1,0 +1,398 @@
+==========================Docker==========================
+==========================Basics=========================
+
+Normal flow=> Development -> Testing -> Production
+
+Container is a virtual machine.
+Docker is a tool which create this VM.
+Docker is a company provides variour tools like a engine to create these VM's.
+
+In normal work we can work with virtaulization using hyperviser on the
+machime.
+
+But docker is the advanced version of it uses the concept od containerisation.
+
+Comparison between VMWare , AWS EC2 , Docker 
+
+VMWare:
+
+Physical h/w -> Hyperviser(ESXI)-> [VM1: os, application]; [VM2: os, applications]; etc
+
+AWS EC2:
+
+Physical h/w -> Hyperviser(Xen/Nitro) -> [Ec2 instance(OS, applications)];[Ec2 instance (os, application)];etc.
+
+Docker:
+
+Physical h/w -> OS-> Docker engine-> Containers(1,2,3,4...) uses docker hub.
+
+===============================OS levek=l virtualization in docker=========
+
+1. Open source centralised platform to create, deploy and run applications.
+2. Docker uses host OS to run application no docker specific os.
+3. Can install docker on any OS, docker engine runs natively on distibution.
+4. Docker is a PAAS.
+5. Docker is a OS level virtualization whereas VMWare is a hardware level virtualization.
+
+
+=====================Advantaged of Docker=================
+->No Preallocation of resources
+->Cost efficiency
+->Reusable, need only docker engine for execution
+->Continuous integration efficiency due to docker image trasfer
+==>Image in running condition is called image, and executing image is called container.
+
+==>Docker is native to Linux
+==>Changes can only be done in a container, not in image.
+
+====================Disadvantages=========================
+=> Containers applications are not platform independents in docker.
+=>All the environments requires same OS.
+
+=============================Workflow===============
+
+Developer-> Docker file-> Docker Engine has Image-> Can be reused , can be pushed to Docker Hub(like a github).
+
+->Container uses layer file system : that is install things layer by layer.like os->files ---etc
+
+======Docker Components==============
+Docker Daemon : i.e docker server \, responsible for running container, manages images etc.
+	Docker client communicates with daemon for operations
+	
+Docker Client: CLI used by developer for performing operation on Daemon, can be used to communicate to multiple daemons.
+
+Docker Host: Hardware and other infra on which the docker softwares executes.
+
+Docker Registry: manages and stores docker images.
+Like a GitHub. can be private and public 
+
+Docker images: readonly binary templates used to create docker container.
+	Single file with all the dependency and configuration for creating containers.
+	
+==Three ways to create docker images====
+
+1. Can be taken from docker hub.
+2. Can be taken from docker file i.e written by developer-> run on docker engine using docker client will convert that file to image.
+3. Can be made from already existing docker container(that is converting container to image will contain all the softwares in it).
+
+===Docker Container===
+It is the running instance of a docker image.
+Used to run the application
+It is like a vm to run the applications.
+
+
+==> Docker is suitable when development and testing environment are same.
+
+=================Docker Ecosystem==============
+1.Docker client
+2. Docker Daemon or Server or Engine // converts your image to container
+3. Docker hub // like git hub
+4. Docker Images // templates or software bulids 
+5. Docker Compose
+
+
+==================How to install Docker etc===========
+
+yum install docker -y // to install the docker
+
+
+docker --version
+
+docker info //provides info of the docker
+
+docker images // will show all the images of docker present on your mackine
+
+
+
+docker search imagename // to search the provided docker image on the 7docker hub
+
+docker pull imagename // will pull the provided image from the docker hub to your machine
+
+docker run -it --name bhupinder imagename /bin/bash // will create and start a docker image on your local after pulling the provided name from hub and give it the provided name here bhupinder
+
+run consist of two steps 1. to create the container from the docker hub on to your docker hub
+						 2. to start the container
+						 
+-it // means interactive mode over the terminal
+
+service docker status // to check wether docker is up or not
+
+docker start containername //to start the container provided , 
+
+docker attach containername // to go inside the container provided , connot go inside a stop container first have to start that
+
+docker ps // will show only the stated container or process
+
+docker ps -a //will show all the container stasted or stopped
+
+docker stop containername // to stop he docker container provided , connot stop a running container first have to stop that
+
+docker rm containername //will delete the provided container name
+
+===============================Installing ubuntu on your docker engine===
+1. Launch a ec2 instance
+2. Install docker
+yum install docker -y
+
+3. yum update -y
+
+4. docker run -it ubuntu /bin/bash // will install ubuntu after pulling that from from the docker hub automatically onto you docker engine
+
+5. cat /etc/os-release // to check which ubuntu version is running on you docker engine
+
+6. exit // will stop the running docker container and get you out of it
+
+7. if you again run docker run -it ubuntu /bin/bash // will create a new docker container on you linux by its own
+	 but the image will remain single but the container will be multiple for ubuntu
+
+8. have to be at root folder toexecute the docker commands
+
+============================
+docker search imagename // to search the available images present on the docker hub
+
+
+=====================Docker file creation==================
+
+1. By using the images from the docker hub then creating the file of that container.
+
+a. Create the ec2 instane-> install docker -> make some container from using the images from docker hub
+b. Create some file on you container like anything on to the created image container from hub
+
+docker diff containername // will show the differences from the installed date to till today
+
+outupt of it looks like
+c file // created file
+a file //appended files
+d file  deleted files
+
+===================TO create the docker image from the container==
+
+
+docker commit containername imagename // will create the image with the name provided from the container
+
+
+docker images // to check the created images
+
+now we can use this image name present on our docker engine locally to create the containers.
+
+using the commands
+ 
+docker run -it --name containername imagename /bin/bash
+
+
+===============Third way to create the docker file  and then image manually=====
+
+1. It is basically a text file, contains some set of instructions
+
+2. name should be same as Dockerfile by default
+
+3. Instruction should be in capital letter only.
+
+-----Docker file components----
+FROM : first instruction should be on top of the file 
+RUN : To execute the commands it will create a layer in image
+MAINTAINER : info of the autjor stc.
+COPY : copy file from local syatem docker engine, have to provide the path  of the data to be used here in the docker file we are writing
+ADD: similar to copy, but download file from internet i.e docker hub and extract them automatically
+EXPOSE: to export ports like 8080 for tomcat, 80 for nginx
+WORKDIR : to set working directory of the the container
+CMD: to execute commands but during the container creation that is the commands written here execute after the container creation
+ENCRYPTION: similar to cmd but has higher priority over cmd.
+ENV : environment variables  for the execution
+ARG:  to provide the arguments
+
+==============Steps to create the docker file====
+1. Create a file name Dockerfile.
+2. Add the instructions to the docker file3.
+3. Build dockerfileto create image.
+4. Steps
+ vi Dockerfile
+ FROM ubuntu:verison // ie create a ubuntu os over the container
+ RUN scho "Technical guftgu" >/tmp/testfile //will create a test file during the execution of the file that will ensure that docker file is being executed successfully.
+ 
+ 
+====To build image out of the file====
+docker build -t imagename . // will create a image with the provided name in the same loc where you have created the docker file . Dot will be mapping to the current directory
+
+docker ps -a // will show all the container
+docker images // will show all the images 
+
+
+/=================To run the created docker file========
+docker run -it --name containername imagename /bin/bash //will execute the dockerfile and creates the container out of it
+
+==> TO check wether the image executed successfulyy
+cat /tmp/testfile // will put the echo message here provided in the docker file
+
+
+=================
+To delete all images
+
+docker rmi $(docker images -a)
+To delete containers which are in exited state
+
+docker rm $(docker ps -a -f status=exited -q)
+To delete containers which are in created state
+
+docker rm $(docker ps -a -f status=created -q)
+
+To delete all the images,
+
+docker rmi -f $(docker images -aq)
+
+=========TO create the docker image from file
+
+vi Dockerfile
+
+FROM ubuntu
+WORKDIR /tmp
+RUN echo "hello vikrant" >/tmp/testfile
+ENV myname vikrant chauhan
+COPY testfile /tmp
+ADD test.tar.gz /tmp
+
+:wq
+
+docker build -t imagename . // will create a docker image of provided name
+docker run -it -name containername imagename /bin/bash //will run and create the container
+
+================Docker volume==============
+Volume is like a shared drive space present on a container and shared among different containers and are in sync with each other. And will remain present on container even of other container got deleted.
+
+We can share the data from container to container
+or From host to container also and vice versa
+
+==> Methods to create docker volumes.
+1. By Docker files.
+2. By Command
+
+
+======
+1.Volume is simply a directory under our container.
+2.We have to declare directory as a volume and share that volume across different containers.
+3. Even if we stop container but we can access the volumes
+4. Volume will be created in one container.
+5. You can declare a directory as volume only durimg container creation.
+6. We can not create container fromexisting container.
+7. We can share one volume across any number of container.
+8. Volume donot get updated during image updation.
+
+====Mapping volume in two ways====
+Container <==> Container
+Host <==> Container
+
+==>1.Creating volume file using docker file
+ that is simply add VOLUME command in the docker file and it will work
+ 
+vi Dockerfile
+
+FROM ubuntu
+VOLUME ["volumename"]
+
+:wq
+
+//create image of this file
+docker build -t imagename .
+
+//create container of this image
+docker run -it --name containername imagename /bin/bash
+
+=================Sharing volume with another container======
+docker run -it containertobeconnectedwithvolume(new container) --privileged=true --volumes-from containerinwhichvolumetobeshare(old container) ubuntu /bin/bash // it will create a new container and will attach the volume of provided container to it and will install ubuntu onto it.
+
+that is 
+
+docker run -it new_cont ==privileged=true --volumefrom old_volume ubuntu /bin/bash
+
+privilege= true // will give all the privileges to the second container
+
+
+===============Creating container with volume with command=======
+docker run -it --name conname -v /volume1 ubuntu /bin/bash //will create a new container with volume1 in root dir 
+
+//To share this volume 
+
+docker run -it  --name newcon --privileged=true --volumes-from oldcon ubuntu /bin/bash // will create a new container with volume attached with it from previous container.
+
+
+====Now even if you delete container2 container1 will remain
+
+==========================Sharing volume between host(linux machine) and container======
+
+1. Verify the directory must be present on your local machine
+ eh /home/ec2-user
+ 
+2. docker run -it --name newcontainer -v /absolutepath:/volume --privileged=true ubuntu /bin/bash // will create a volume in the new container and attach that to the local absolute path provided
+
+:/volume //path of volume on the container may be provided in the docker file
+-v //to determine that volume has to be created
+ubuntu // will install ubuntu on the new server
+/absolute path : path of the volume on the local host which you want to create as host
+ 
+==============Misc==============
+docker volume ls // will list all the volumes present on you machine inside the docker containers 
+
+docker volume create <volume name> //will create a volume directly but will have to be link during creation only
+
+docker volume rm < volume name> //will remove the liosted volume
+
+docker volume prune // will remove all the unused docker volumnes from your machines
+
+docker volume inspect <volumename> //will provide info of volume
+
+docker container inspect <container name> //info of the container
+
+============================================
+====================Docker Port  Expose==================
+
+Container do not have any ip so it cannot be accessible from iternet
+
+Way to access the application deployed on container is 
+Access ec2 instanse (using the public ip) -> accessing the docker container using the port.
+
+Their ar 1-65535 logical post availabkle on internet
+
+-------Http post 80 is present on the ec2 instance and also on the container os.
+So we have to map the ec2 port with container port.
+
+We can changes ec2 port, b ut cannot change container ports .
+
+rg . 80 number port of the ec2 will have to be mapped to the conatiner port so that the conatiner applications will be accessible through the open internet.
+
+
+========================Flow=====
+If we sent request to port 80 then it will be automatically redirected to the docker container port and data will be transferred from container to user deployed on the ec2 intance.
+
+
+So this process of mapping the container port with the ec2 machine is called p]ort exposing in docker.
+
+
+===================================
+
+
+Expose 8080 port to connect to internet
+
+
+============Steps=====
+1. Login to AWS 
+2. Create instance
+3. Install Docker
+4. Create container from the image
+
+
+====Steps to expose post===
+run the docker 
+docker run -td --name containername image -p 80:80  // will create the container and will map 80 port of the aws machine to the docker container port 
+
+if we donot use -p then it will only exposes the container port with another container port but will not with the outside client 
+
+-p // exposes the code with the open internet
+
+80:80 //first 80 is off host 
+	  //second 80 is of the conatiner 
+
+td // will create the container in daemon process and will not enter us into that 
+
+as happening in -it case
+
+

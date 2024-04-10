@@ -1,23 +1,43 @@
 
-Linux
-Git
-Docker
+Linux : Done (08-April-2024)
+Git : Done (09-April-2024)
+Docker : 
 Kubernates
 AWS services handson
 
-13-April
+14-April
 
-DSA:GFG, College Wallah
+DSA:GFG,College Wallah
 
 16-April
 
 Java Basic
+Static
+Final
+super
+this
+inheritence
+Interface
+Abstract class
+Access modifier
+throw
+throws
+primitive 
+non primitive
+
 Collections
+interfaces(List, Set, Queue, Map)
+Iterator
+ListIterator
+Use cases
+
+
+
 Streams
 Generics
 Optional
 serialization and desrialization
-Ecception handling
+Exception handling
 Concurrency(Multithreading)
 Junit
 Kafka
@@ -32,9 +52,41 @@ SpringBoot
 Hibernate
 Rest Api
 Microservices
+Design Pattern
+Solid Principles
 
 26-April
 React
+System Design
+LLD
+HLD
+
+
+--
+ML
+Cybersecurity
+
+
+=========To-Do=============
+Call Shanawaz :Done
+Mandotary check issue
+Request gor report manager
+Mail to doug related to hpcc app :Done
+
+===================
+Paisa 
+Power
+Pariwar
+Nothing like paap , punya in the world
+
+Do not talk unnecessary, control emotions
+Follow discipline is the only key
+2 , 3 one time.
+
+8-9  sh , pr
+1-2  mg, sl
+7-8  ch 3
+10 pr
 
 
 
